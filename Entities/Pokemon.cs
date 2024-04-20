@@ -7,6 +7,6 @@ namespace pokemon_review_api.Entities
         public DateTime BirthDate { get; set; }
         public ICollection<Review> Reviews { get; set; }
         public ICollection<PokemonOwner> PokemonOwners { get; set; }
-        public ICollection<PokemonCategory> pokemonCategories { get; set; }
+        public ICollection<PokemonCategory> PokemonCategories { get; set; }
     }
 }
