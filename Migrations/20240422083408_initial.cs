@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace pokemon_review_api.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -39,7 +39,7 @@ namespace pokemon_review_api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Pokemons",
+                name: "Pokemon",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -49,11 +49,11 @@ namespace pokemon_review_api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pokemons", x => x.Id);
+                    table.PrimaryKey("PK_Pokemon", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "reviewers",
+                name: "Reviewers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -63,7 +63,7 @@ namespace pokemon_review_api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_reviewers", x => x.Id);
+                    table.PrimaryKey("PK_Reviewers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -105,15 +105,15 @@ namespace pokemon_review_api.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PokemonCategories_Pokemons_PokemonId",
+                        name: "FK_PokemonCategories_Pokemon_PokemonId",
                         column: x => x.PokemonId,
-                        principalTable: "Pokemons",
+                        principalTable: "Pokemon",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "reviews",
+                name: "Reviews",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -126,17 +126,17 @@ namespace pokemon_review_api.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_reviews", x => x.Id);
+                    table.PrimaryKey("PK_Reviews", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_reviews_Pokemons_PokemonId",
+                        name: "FK_Reviews_Pokemon_PokemonId",
                         column: x => x.PokemonId,
-                        principalTable: "Pokemons",
+                        principalTable: "Pokemon",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_reviews_reviewers_ReviewerId",
+                        name: "FK_Reviews_Reviewers_ReviewerId",
                         column: x => x.ReviewerId,
-                        principalTable: "reviewers",
+                        principalTable: "Reviewers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -158,9 +158,9 @@ namespace pokemon_review_api.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PokemonOwners_Pokemons_PokemonId",
+                        name: "FK_PokemonOwners_Pokemon_PokemonId",
                         column: x => x.PokemonId,
-                        principalTable: "Pokemons",
+                        principalTable: "Pokemon",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -181,13 +181,13 @@ namespace pokemon_review_api.Migrations
                 column: "OwnerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_reviews_PokemonId",
-                table: "reviews",
+                name: "IX_Reviews_PokemonId",
+                table: "Reviews",
                 column: "PokemonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_reviews_ReviewerId",
-                table: "reviews",
+                name: "IX_Reviews_ReviewerId",
+                table: "Reviews",
                 column: "ReviewerId");
         }
 
@@ -201,7 +201,7 @@ namespace pokemon_review_api.Migrations
                 name: "PokemonOwners");
 
             migrationBuilder.DropTable(
-                name: "reviews");
+                name: "Reviews");
 
             migrationBuilder.DropTable(
                 name: "Categories");
@@ -210,10 +210,10 @@ namespace pokemon_review_api.Migrations
                 name: "Owners");
 
             migrationBuilder.DropTable(
-                name: "Pokemons");
+                name: "Pokemon");
 
             migrationBuilder.DropTable(
-                name: "reviewers");
+                name: "Reviewers");
 
             migrationBuilder.DropTable(
                 name: "Countries");

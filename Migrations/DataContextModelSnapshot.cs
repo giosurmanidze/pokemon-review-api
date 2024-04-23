@@ -103,7 +103,7 @@ namespace pokemon_review_api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pokemons");
+                    b.ToTable("Pokemon");
                 });
 
             modelBuilder.Entity("pokemon_review_api.Entities.PokemonCategory", b =>
@@ -167,7 +167,7 @@ namespace pokemon_review_api.Migrations
 
                     b.HasIndex("ReviewerId");
 
-                    b.ToTable("reviews");
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("pokemon_review_api.Entities.Reviewer", b =>
@@ -188,7 +188,7 @@ namespace pokemon_review_api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("reviewers");
+                    b.ToTable("Reviewers");
                 });
 
             modelBuilder.Entity("pokemon_review_api.Entities.Owner", b =>

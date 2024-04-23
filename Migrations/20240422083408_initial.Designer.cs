@@ -12,8 +12,8 @@ using dotnet_web_api_crud.Data;
 namespace pokemon_review_api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240420185609_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240422083408_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,7 +106,7 @@ namespace pokemon_review_api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pokemons");
+                    b.ToTable("Pokemon");
                 });
 
             modelBuilder.Entity("pokemon_review_api.Entities.PokemonCategory", b =>
@@ -170,7 +170,7 @@ namespace pokemon_review_api.Migrations
 
                     b.HasIndex("ReviewerId");
 
-                    b.ToTable("reviews");
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("pokemon_review_api.Entities.Reviewer", b =>
@@ -191,7 +191,7 @@ namespace pokemon_review_api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("reviewers");
+                    b.ToTable("Reviewers");
                 });
 
             modelBuilder.Entity("pokemon_review_api.Entities.Owner", b =>
