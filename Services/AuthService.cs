@@ -4,31 +4,23 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using pokemon_review_api.Services;
 
-public class AuthService : IAuthService
+public class AuthService 
 {
-    private readonly IConfiguration _config;
+    private readonly IAuthService _userRepository;
 
-    public AuthService(IConfiguration config)
+    public AuthService(IAuthService userRepository)
     {
-        _config = config;
+        _userRepository = userRepository;
     }
 
-    public string GenerateJwtToken(string userId, string username)
+
+
+    private bool VerifyPassword(string password, string hashedPassword)
     {
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes("your_secret_key_here");
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Subject = new ClaimsIdentity(new Claim[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, userId),
-                new Claim(ClaimTypes.Name, username)
-            }),
-            Expires = DateTime.UtcNow.AddDays(7),
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-        };
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-        return tokenHandler.WriteToken(token);
+        // In a real-world scenario, you would compare the provided password hash with the stored hash
+        // using a secure password hashing algorithm like bcrypt.
+        // For simplicity, we'll compare the plain-text password with the hashed password here.
+        return Convert.ToBase64String(Encoding.UTF8.GetBytes(password)) == hashedPassword;
     }
 }
 

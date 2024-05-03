@@ -1,0 +1,6 @@
+# Ignore obj and bin folders
+obj/
+bin/
+
+# Ignore properties folder
+**/Properties/
