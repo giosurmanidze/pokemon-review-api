@@ -12,6 +12,7 @@ namespace pokemon_review_api.helper
             //   .ForMember(dest => dest.Name, opt => opt.MapFrom(src => $"{src.Name} {src.Id}"));
             CreateMap<Category, CategoryDto>();
             CreateMap<Country, CountryDto>();
+            CreateMap<Owner, OwnerDto>();
         }
     }
 }
