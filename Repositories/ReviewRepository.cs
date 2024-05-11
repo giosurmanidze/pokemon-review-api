@@ -1,11 +1,11 @@
-using AutoMapper;
+
 using dotnet_web_api_crud.Data;
 using pokemon_review_api.Entities;
 using pokemon_review_api.Interfaces;
 
 namespace pokemon_review_api.Repositories
 {
-    public class ReviewRepository
+    public class ReviewRepository : IReviewRepository
     {
         private readonly DataContext _context;
 

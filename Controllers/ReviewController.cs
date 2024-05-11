@@ -21,7 +21,6 @@ namespace pokemon_review_api.Controllers
         }
 
 
-
         [HttpGet]
         [ProducesResponseType(200,Type = typeof(IEnumerable<Review>))]
         public ActionResult GetAllReviews()
@@ -35,9 +34,9 @@ namespace pokemon_review_api.Controllers
         }
         
         [HttpGet("{reviewId}")]
-        [ProducesResponseType(200, Type = typeof(Owner))]
+        [ProducesResponseType(200, Type = typeof(Review))]
         [ProducesResponseType(400)]
-        public IActionResult GetOwner(int reviewId)
+        public IActionResult GetReview(int reviewId)
         {
             if(!_reviewRepository.ReviewExists(reviewId))
                 return NotFound();
